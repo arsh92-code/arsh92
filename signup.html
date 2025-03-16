@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    
+    <link rel="stylesheet" href="index1.css">
+   
+</head>
+<body>
+    <div class="container"><img src="eventlogo2.png" alt="Company Logo" class="logo" height="200" breadth="50">
+             
+        <h2>Step - 1</h2>
+
+        <form id="registerForm">
+            
+            <input type="email" id="email" class="form-control" placeholder="Email" required>
+
+            
+            <input type="password" id="pin" class="form-control" placeholder="Create 4 digit pin" maxlength="4" required>
+
+           
+            <input type="tel" id="mobile" class="form-control" placeholder="Add Mobile Number" pattern="[0-9]{10}" required>
+
+              
+            
+            <input type="text" id="fullName" class="form-control" placeholder="Enter your name" pattern="[A-Za-z ]{2,}" required>
+
+
+
+
+
+                
+                    
+            <input type="text" id="locationInput" class="form-control" pl<input type="text" id="locationInput" class="form-control" placeholder="Enter Location" required>
+        
+            
+           
+            <div id="output"></div>
+        
+            <script>
+                function getLocation() {
+                    let location = document.getElementById("locationInput").value;
+                    let apiKey = "AlzaSylWA7uT25ETubtvijIXRMiDXjrYG6fmcFR"; // Replace with your API key
+                    
+        
+                    if (location === "") {
+                        alert("Please enter a location");
+                        return;
+                    }
+        
+                    let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${apiKey}`;
+        
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === "OK") {
+                                let lat = data.results[0].geometry.location.lat;
+                                let lon = data.results[0].geometry.location.lng;
+                                document.getElementById("output").innerHTML = `
+                                    <p><b>Latitude:</b> ${lat}</p>
+                                    <p><b>Longitude:</b> ${lon}</p>
+                                    <p><a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank">📍 View on Google Maps</a></p>
+                                `;
+                            } else {
+                                document.getElementById("output").innerHTML = "<p style='color:red;'>Location not found</p>";
+                            }
+                        })
+                        .catch(error => console.error("Error fetching location:", error));
+                }
+            </script>
+
+                <button type="button" class="btn btn-outline" onclick="validateAndRedirect()">Next</button>
+            <p class="login-link">
+                <a href="index.html">Already have an account? Sign in Now!
+            </p>
+        </form>
+    </div>
+
+   
+</body>
+</html>
+
+<script>document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registerForm");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        validateAndRedirect();
+    });
+});
+
+function validateAndRedirect() {
+    const email = document.getElementById("email");
+    const pin = document.getElementById("pin");
+    const mobile = document.getElementById("mobile");
+    const fullName = document.getElementById("fullName");
+    const locationInput = document.getElementById("locationInput");
+
+    let isValid = true;
+
+    // Email Validation
+    if (!validateEmail(email.value)) {
+        showError(email, "Enter a valid email address");
+        isValid = false;
+    } else {
+        clearError(email);
+    }
+
+    // PIN Validation (4-digit numeric)
+    if (!/^\d{4}$/.test(pin.value)) {
+        showError(pin, "PIN must be exactly 4 digits");
+        isValid = false;
+    } else {
+        clearError(pin);
+    }
+
+    // Mobile Number Validation (10-digit numeric)
+    if (!/^\d{10}$/.test(mobile.value)) {
+        showError(mobile, "Enter a valid 10-digit mobile number");
+        isValid = false;
+    } else {
+        clearError(mobile);
+    }
+
+    // Name Validation (Only letters and spaces, at least 2 characters)
+    if (!/^[A-Za-z ]{2,}$/.test(fullName.value)) {
+        showError(fullName, "Enter a valid name (letters only)");
+        isValid = false;
+    } else {
+        clearError(fullName);
+    }
+
+    // Location Validation (Not empty)
+    if (locationInput.value.trim() === "") {
+        showError(locationInput, "Location is required");
+        isValid = false;
+    } else {
+        clearError(locationInput);
+    }
+
+    // If all validations pass, store data and redirect
+    if (isValid) {
+        saveUserData();
+        window.location.href = "signup1.html"; // Redirect to the next step
+    }
+}
+
+// Helper Functions
+function validateEmail(email) {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
+}
+
+function showError(input, message) {
+    clearError(input);
+    const errorDiv = document.createElement("div");
+    errorDiv.className = "error-message";
+    errorDiv.innerText = message;
+    input.classList.add("error-border");
+    input.parentNode.insertBefore(errorDiv, input.nextSibling);
+}
+
+function clearError(input) {
+    input.classList.remove("error-border");
+    const error = input.parentNode.querySelector(".error-message");
+    if (error) error.remove();
+}
+
+function saveUserData() {
+    const userData = {
+        email: document.getElementById("email").value,
+        pin: document.getElementById("pin").value,
+        mobile: document.getElementById("mobile").value,
+        fullName: document.getElementById("fullName").value,
+        location: document.getElementById("locationInput").value
+    };
+    localStorage.setItem("userData", JSON.stringify(userData));
+}
+</script>

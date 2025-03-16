@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get My Location</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Get My Location</h1>
+        <button id="getLocationBtn">Get My Location</button>
+        <div id="locationResult"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<style>/* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    
+    /* Body Styling */
+    body {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        color: #333;
+    }
+    
+    /* Container Styling */
+    .container {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Heading Styling */
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #2c3e50;
+    }
+    
+    /* Button Styling */
+    #getLocationBtn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        background: #3498db;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    
+    #getLocationBtn:hover {
+        background: #2980b9;
+    }
+    
+    /* Location Result Styling */
+    #locationResult {
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #333;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 480px) {
+        .container {
+            padding: 20px;
+        }
+    
+        h1 {
+            font-size: 1.5rem;
+        }
+    
+        #getLocationBtn {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+    }</style>
+    <script>// DOM Elements
+        const getLocationBtn = document.getElementById('getLocationBtn');
+        const locationResult = document.getElementById('locationResult');
+        
+        // Get Location Function
+        function getLocation() {
+            if (navigator.geolocation) {
+                // Request the user's location
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        locationResult.innerHTML = `
+                            <p><strong>Latitude:</strong> ${latitude}</p>
+                            <p><strong>Longitude:</strong> ${longitude}</p>
+                        `;
+                        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                    },
+                    (error) => {
+                        // Handle errors
+                        switch (error.code) {
+                            case error.PERMISSION_DENIED:
+                                locationResult.innerHTML = "<p>User denied the request for Geolocation.</p>";
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                locationResult.innerHTML = "<p>Location information is unavailable.</p>";
+                                break;
+                            case error.TIMEOUT:
+                                locationResult.innerHTML = "<p>The request to get user location timed out.</p>";
+                                break;
+                            default:
+                                locationResult.innerHTML = "<p>An unknown error occurred.</p>";
+                        }
+                    }
+                );
+            } else {
+                locationResult.innerHTML = "<p>Geolocation is not supported by this browser.</p>";
+            }
+        }
+        
+        // Event Listener for Button
+        getLocationBtn.addEventListener('click', getLocation);</script>

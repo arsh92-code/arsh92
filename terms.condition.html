@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Event Host</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Privacy Policy</h1>
+        <p>Last Updated: October 10, 2023</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>1. Introduction</h2>
+            <p>Welcome to Event Host! This Privacy Policy explains how we collect, use, and protect your personal information when you use our platform.</p>
+        </section>
+
+        <section>
+            <h2>2. Information We Collect</h2>
+            <p>We may collect the following types of information:</p>
+            <ul>
+                <li><strong>Personal Information:</strong> Name, email address, phone number, etc.</li>
+                <li><strong>Usage Data:</strong> How you interact with our platform.</li>
+                <li><strong>Cookies:</strong> To enhance your browsing experience.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. How We Use Your Information</h2>
+            <p>We use your information to:</p>
+            <ul>
+                <li>Provide and improve our services.</li>
+                <li>Communicate with you about updates and offers.</li>
+                <li>Analyze usage patterns to enhance user experience.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Data Security</h2>
+            <p>We implement industry-standard security measures to protect your data from unauthorized access or misuse.</p>
+        </section>
+
+        <section>
+            <h2>5. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access your personal data.</li>
+                <li>Request corrections or deletions.</li>
+                <li>Opt-out of marketing communications.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>6. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page.</p>
+        </section>
+
+        <section>
+            <h2>7. Contact Us</h2>
+            <p>If you have any questions, please contact us at <a href="mailto:privacy@eventhost.app">privacy@eventhost.app</a>.</p>
+        </section>
+    </main>
+
+    
+</body>
+</html>
+<style>/* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+    
+    header {
+        background-color: #000000;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+    
+    header p {
+        margin: 5px 0 0;
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    main {
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    section {
+        margin-bottom: 30px;
+    }
+    
+    h2 {
+        color: #000000;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    p {
+        font-size: 1rem;
+        margin: 10px 0;
+    }
+    
+    ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+    
+    li {
+        margin-bottom: 5px;
+    }
+    
+    a {
+        color: #3498db;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    footer {
+        background-color: #000000;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    footer p {
+        margin: 0;
+    }
+    
+    #acceptBtn {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    
+    #acceptBtn:hover {
+        background-color: #2980b9;
+    }</style>
+
+    <script>// JavaScript for Privacy Policy Page
+
+        // Accept Button Functionality
+        const acceptBtn = document.getElementById('acceptBtn');
+        
+        acceptBtn.addEventListener('click', () => {
+            alert('Thank you for accepting our Privacy Policy!');
+            // Redirect to another page or perform other actions
+            window.location.href = 'dashboard.html'; // Example: Redirect to dashboard
+        });
+        
+        // Optional: Add a scroll-to-top button
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.textContent = '↑';
+        scrollToTopBtn.style.position = 'fixed';
+        scrollToTopBtn.style.bottom = '80px';
+        scrollToTopBtn.style.right = '20px';
+        scrollToTopBtn.style.padding = '10px';
+        scrollToTopBtn.style.backgroundColor = '#3498db';
+        scrollToTopBtn.style.color = '#fff';
+        scrollToTopBtn.style.border = 'none';
+        scrollToTopBtn.style.borderRadius = '50%';
+        scrollToTopBtn.style.cursor = 'pointer';
+        scrollToTopBtn.style.display = 'none';
+        document.body.appendChild(scrollToTopBtn);
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });</script>

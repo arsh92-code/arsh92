@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODCEVENT - Register</title>
+   
+    
+</head>
+<body>
+    <div class="container">
+        <img src="eventlogo2.png" alt="Company Logo" class="logo" height="200" breadth="50">
+        <h2>Step - 2</h2>
+
+        <form id="registerForm">
+            
+            <div class="profile-container">
+                <label for="fileUpload">
+                    <img src="icon profile.jpg" id="profileImage" class="profile-pic" alt="Profile Picture">
+                </label>
+                <input type="file" id="fileUpload" class="file-input" accept="image/*">
+                <p class="error-message" id="errorMsg">Invalid file type! Please upload an image.</p>
+                <button class="upload-btn" onclick="document.getElementById('fileUpload').click()">Upload Image</button>
+            </div>
+           
+            </style>
+            <input type="tel" id="mobile" class="form-control" placeholder="Whatsupp Number  " pattern="[0-9]{10}" required>
+
+          
+            
+
+            
+            </body>
+            </html>
+                <script>$(document).ready(function() {
+                    $('#roles').select2({
+                        placeholder: "Choose some options...",
+                        allowClear: true
+                    });
+                });
+                </script>
+
+                
+           
+                <button type="button" class="btn btn-outline" onclick="validateAndRedirect()">Next</button>
+<p class="login-link">
+  
+
+<script>
+    function validateAndRedirect() {
+        // Perform validation if needed
+        // Example: Check if a required field is filled
+        let email = document.getElementById("email");
+        if (email && email.value.trim() === "") {
+            alert("Please enter your email.");
+            return;
+        }
+
+        // Redirect to typeaccount.html
+        window.location.href = "typeaccount.html";
+    }
+</script>
+
+<script>
+    document.getElementById('fileUpload').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const errorMsg = document.getElementById("errorMsg");
+
+        if (file) {
+            // Validate file type
+            if (!file.type.startsWith("image/")) {
+                errorMsg.style.display = "block";
+                return;
+            }
+            
+            errorMsg.style.display = "none"; // Hide error message
+            
+            // Read file and update profile picture
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profileImage').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+            
+        }
+    });
+    
+</script>
+
+                
+           
+            </p>
+        </form>
+    </div>
+
+   
+</body>
+</html>
+
+<style>@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+    * {
+        box-sizing: border-box;
+        font-family: "Lexend", sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        transition: background-color 0.3s, color 0.3s;
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    
+    .logo {
+        max-width: 150px;
+        height: auto;
+        margin-bottom: 15px;
+    }
+    
+    h2 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+    
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    
+    input:focus {
+        border-color: #1E90FF;
+        outline: none;
+    }
+    
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    
+    .btn-outline {
+        background: white;
+        border: 1px solid black;
+        color: black;
+    }
+    
+    .btn-outline:hover {
+        background: black;
+        color: white;
+    }
+    
+    .login-link a {
+        color: black;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+    
+    @media (max-width: 576px) {
+        .container {
+            max-width: 95%;
+            padding: 15px;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        input {
+            font-size: 14px;
+        }
+        button {
+            font-size: 14px;
+        }
+    }
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.container {
+    text-align: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logo span {
+    color: red;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.profile-pic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #000000;
+    padding: 10px;
+    background-color: white;
+}
+
+.upload-btn {
+    width: 90%;
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+
+    </style>

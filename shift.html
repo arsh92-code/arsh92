@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gig Jobs Listing</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        :root {
+            --primary: #2d3436;
+            --secondary: #636e72;
+            --accent: #0984e3;
+            --background: #f8f9fa;
+            --surface: #ffffff;
+            --radius: 12px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+     
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .gig-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .gig-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .gig-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .gig-date {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .gig-location {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .location-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+        }
+
+        .distance {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .address {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .gig-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+        }
+
+        .pay-rate {
+            font-size: 1.2rem;
+            color: #2ecc71;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .gig-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .time-remaining {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .gig-location {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .pay-rate {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Gig Job 1 -->
+        <div class="gig-card">
+            <div class="gig-header">
+                <div class="gig-date">Fri, Mar 7, 2025</div>
+                <div class="time-remaining" id="time1"></div>
+            </div>
+            
+            <div class="gig-location">
+                <div class="location-info">
+                    <h3>Mainland China Powai</h3>
+                    <div class="distance">61 KM away</div>
+                </div>
+                <div class="pay-rate">₹120 / hour</div>
+            </div>
+
+            <div class="address">
+                B-Wing, Hitranandani Business Park, Ventura Building, 1st, High St, opposite D’ Mart.
+                Hitranandani Gardens, Powai, Mumbai, Maharashtra 400076, India
+            </div>
+
+            <div class="gig-details">
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Speciality Restaurants</span>
+                </div>
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                        <circle cx="12" cy="9" r="2.5"/>
+                    </svg>
+                    <span>Watter</span>
+                </div>
+            </div>
+
+            <div class="gig-footer">
+                <div class="shift-timing">6:00 PM – 12:00 AM</div>
+                <button class="btn btn-primary" onclick="applyForJob(this)">Apply Now</button>
+            </div>
+        </div>
+
+        <!-- Gig Job 2 -->
+        <div class="gig-card">
+            <div class="gig-header">
+                <div class="gig-date">Sat, Mar 8, 2025</div>
+                <div class="time-remaining" id="time2"></div>
+            </div>
+            
+            <div class="gig-location">
+                <div class="location-info">
+                    <h3>Signed by: Specialty Restaurants</h3>
+                    <div class="distance">61 KM away</div>
+                </div>
+                <div class="pay-rate">₹120 / hour</div>
+            </div>
+
+            <div class="address">
+                1, Ventura Building, Hitranandani Business Park, 101, Central Ave,
+                Hitranandani Gardens, Powai, Mumbai, Maharashtra 400076, India
+            </div>
+
+            <div class="gig-details">
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Watter</span>
+                </div>
+            </div>
+
+            <div class="gig-footer">
+                <div class="shift-timing">6:00 PM – 12:00 AM</div>
+                <button class="btn btn-primary" onclick="applyForJob(this)">Apply Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="bottom-nav">
+
+        
+        <a href="homepage.html"class="nav-link">
+         <div class="nav-item active" data-page="home">
+             <i class="icon-home"></i>
+             <img src="home-icon-512x510-7enk0ake.png" alt="Home" width="0">
+         <h3>HOME</h3></a>
+ 
+      
+             
+         </div>
+          
+        <a href="shift.html"class="nav-link">
+         <div class="nav-item active" data-page="home">
+             <i class="icon-home"></i>
+             <img src="briefcase.png" alt="Home" width="0">
+         <h3>SHIFT</h3></a>
+ 
+             
+         </div>
+         <a href="comingsoon.html"class="nav-link">
+             <div class="nav-item active" data-page="home">
+                 <i class="icon-home"></i>
+                 <img src="refer (1).png" alt="Home" width="0">
+             <h3>REFER</h3></a>
+         </a>
+         </div>
+         <a href="signup.html" class="nav-link"></a>
+             <div class="nav-item" data-page="profile">
+                 <img src="684833.png" alt="Profile">
+                 <h3>ID </h3>
+             </div>
+         </a>
+ 
+         <a href="profile.html"class="nav-link">
+             <div class="nav-item active" data-page="home">
+                 <i class="icon-home"></i>
+                 <img src="icon profile.jpg" alt="Home" width="0">
+             <h3>PROFILE</h3></a>
+ 
+ 
+ 
+ 
+ 
+ 
+         </div>
+     </nav>
+
+    <script>
+        // Time remaining calculator
+        function updateTimeRemaining() {
+            const dates = [
+                new Date('2025-03-07'),
+                new Date('2025-03-08')
+            ];
+
+            dates.forEach((date, index) => {
+                const now = new Date();
+                const diff = date - now;
+                
+                if(diff > 0) {
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    document.getElementById(`time${index+1}`).innerHTML = 
+                        `${days}d ${Math.round(hours)}h remaining`;
+                } else {
+                    document.getElementById(`time${index+1}`).innerHTML = 'Expired';
+                }
+            });
+        }
+
+        // Application handler
+        function applyForJob(button) {
+            const card = button.closest('.gig-card');
+            if(!card.dataset.applied) {
+                button.textContent = 'Applied ✓';
+                button.style.backgroundColor = '#2ecc71';
+                card.dataset.applied = true;
+                
+                // Add to applications count
+                const applications = parseInt(localStorage.getItem('applications') || '0', 10);
+                localStorage.setItem('applications', applications + 1);
+            }
+        }
+
+        // Initial setup
+        updateTimeRemaining();
+        setInterval(updateTimeRemaining, 60000);
+
+        // Track applications
+        window.addEventListener('load', () => {
+            const count = localStorage.getItem('applications') || 0;
+            console.log(`Total applications: ${count}`);
+        });
+    </script>
+</body>
+</html>

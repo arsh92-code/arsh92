@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Selection Interface</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Lexend", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+        :root {
+            --primary-color: #000000;
+            --accent-color: #e74c3c;
+            --hover-color: #000000;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f6fa;
+            padding: 20px;
+        }
+
+
+        .roles-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .roles-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .role-button {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-align: center;
+            user-select: none;
+        }
+
+        .role-button:hover:not(.selected) {
+            border-color: var(--hover-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .role-button.selected {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .submit-button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .submit-button:not(:disabled):hover {
+            background: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            .roles-container {
+                padding: 1.5rem;
+            }
+            
+            .roles-title {
+                font-size: 1.5rem;
+            }
+            
+            .role-button {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="roles-container">
+        <h1 class="roles-title">Choose Your Roles</h1>
+        <div class="roles-grid">
+            <div class="role-button">Waiter</div>
+            <div class="role-button">Bartender</div>
+            <div class="role-button">Hostess</div>
+            <div class="role-button">Delivery</div>
+            <div class="role-button">Promoter</div>
+            <div class="role-button">Event Coordinator</div>
+        </div>
+        <button class="submit-button" enabled onclick="window.location.href='user.html'">Continue</button>
+
+    </div> 
+       
+
+    <script>
+        (function() {
+            const MAX_SELECTIONS = 3;
+            let selectedRoles = new Set();
+            
+            const roleButtons = document.querySelectorAll('.role-button');
+            const submitButton = document.querySelector('.submit-button');
+
+            roleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const role = button.textContent;
+                    
+                    if (button.classList.contains('selected')) {
+                        selectedRoles.delete(role);
+                        button.classList.remove('selected');
+                    } else {
+                        if (selectedRoles.size >= MAX_SELECTIONS) {
+                            showError(`Maximum ${MAX_SELECTIONS} roles can be selected`);
+                            return;
+                        }
+                        selectedRoles.add(role);
+                        button.classList.add('selected');
+                    }
+                    
+                    updateSubmitButton();
+                    animateSelection(button);
+                });
+            });
+
+            function updateSubmitButton() {
+                submitButton.disabled = selectedRoles.size === 0;
+            }
+
+            function animateSelection(button) {
+                button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    button.style.transform = button.classList.contains('selected') 
+                        ? 'scale(1.05)' 
+                        : 'scale(1)';
+                }, 100);
+            }
+
+            function showError(message) {
+                const errorEl = document.createElement('div');
+                errorEl.textContent = message;
+                errorEl.style = `
+                    position: fixed;
+                    top: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #e74c3c;
+                    color: white;
+                    padding: 1rem 2rem;
+                    border-radius: 8px;
+                    animation: slideDown 0.3s ease;
+                `;
+                
+                document.body.appendChild(errorEl);
+                setTimeout(() => errorEl.remove(), 3000);
+            }
+
+          
+
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !submitButton.disabled) {
+                    submitButton.click();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

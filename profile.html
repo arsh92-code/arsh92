@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Dashboard</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="home.js">
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-info">
+                <h2 id="profile-name">Arsh</h2>
+                <p id="phone-number">+91 9557875692</p>
+                <p id="email">arshcollege9@gmail.com</p>
+            </div>
+              <button class="edit-btn" onclick="editFunction()">
+               <a href="editprofile.html"><i class="fas fa-edit"></i> Edit Profile</a> 
+            </button>
+            <style>
+            .edit-btn {
+                
+                color: rgb(16, 0, 135);
+                border: none;
+                padding: 10px 20px;
+                font-size: 10px;
+                display: flex;
+                align-items: center;
+                
+                border-radius: 5px;
+                transition: 0.3s;
+            }
+            
+            
+            
+            
+            </style>
+        </div>
+
+        <div class="profile-actions">
+            <div class="action-box"> 
+                <i class="fas fa-book"></i>  
+                <span>My Bookings</span>
+            </div>
+            <div class="action-box">
+                <i class="fas fa-mobile-alt"></i>  
+                <span>Chat US</span>
+            </div>
+            <div class="action-box" onclick="openWhatsApp()">
+                <i class="fab fa-whatsapp"></i>  
+                <span>Help & Support</span>
+            </div>
+            
+            <script>
+            function openWhatsApp() {
+                window.open("https://wa.me/9557875692", "_blank");
+            }
+            </script>
+            
+        </div>
+
+        <div class="profile-menu">
+            <ul>
+                <li><i class="fas fa-clipboard-list"></i> My Plans</li>
+                <li><i class="fas fa-wallet"></i> Wallet</li>
+                <li><i class="fas fa-star"></i> Plus Membership</li>
+                <li><i class="fas fa-thumbs-up"></i> My Rating</li>
+                <li><i class="fas fa-map-marker-alt"></i> Manage Addresses</li>
+                <li><i class="fas fa-credit-card"></i> Manage Payment Methods</li>
+                <li><i class="fas fa-cog"></i> Settings</li>
+                <li><i class="fas fa-info-circle"></i> About</li>
+                <li><i class="fas fa-info-circle"></i> Our Team </li>
+                <button class="logout-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </button>
+                <style>.logout-btn {
+                    background-color: #000000; /* Red button */
+                    color: white;
+                    border: none;
+                    padding: 5px 8px;
+                    font-size: 15px;
+                   
+                    align-items: center;
+                   
+                    
+                    text-align: center;
+                }
+                
+                .logout-btn i {
+                    margin-right: 8px;
+                }
+                
+                
+                </style>
+                
+            </ul>
+        </div>
+
+       
+        <nav class="bottom-nav">
+
+        
+            <nav class="bottom-nav">
+
+        
+                <a href="homepage.html"class="nav-link">
+                 <div class="nav-item active" data-page="home">
+                     <i class="icon-home"></i>
+                     <img src="home-icon-512x510-7enk0ake.png" alt="Home" width="0">
+                 <h3>Home</h3></a>
+         
+              
+                     
+                 </div>
+                  
+                <a href="shift.html"class="nav-link">
+                 <div class="nav-item active" data-page="home">
+                     <i class="icon-home"></i>
+                     <img src="briefcase.png" alt="Home" width="0">
+                 <h3>Shift</h3></a>
+         
+                     
+                 </div>
+                 <a href="comingsoon.html"class="nav-link">
+                     <div class="nav-item active" data-page="home">
+                         <i class="icon-home"></i>
+                         <img src="refer (1).png" alt="Home" width="0">
+                     <h3>Refer</h3></a>
+                 </a>
+                 </div>
+                 <a href="signup.html" class="nav-link"></a>
+                     <div class="nav-item" data-page="profile">
+                         <img src="684833.png" alt="Profile">
+                         <h3>ID</h3>
+                     </div>
+                 </a>
+         
+                 <a href="profile.html"class="nav-link">
+                     <div class="nav-item active" data-page="home">
+                         <i class="icon-home"></i>
+                         <img src="icon profile.jpg" alt="Home" width="0">
+                     <h3>Profile</h3></a>
+         
+         
+         
+         
+         
+         
+                 </div>
+             </nav>
+         
+    </div>
+    
+ 
+
+</body>
+
+</html>
+<style>/* Reset */
+   
+    /* Profile Container */
+   
+   
+    
+    .profile-info h2 {
+        margin: 0;
+        font-size: 20px;
+    }
+    
+    .profile-info p {
+        margin: 3px 0;
+        color: gray;
+    }
+    
+    /* Edit Button */
+    .edit-btn {
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    
+    /* Action Boxes */
+    .profile-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    
+    .action-box {
+        text-align: center;
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 10px;
+        flex: 1;
+        margin: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .action-box:hover {
+        background: #ddd;
+    }
+    
+    .action-box i {
+        font-size: 20px;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    /* Menu List */
+    .profile-menu ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .profile-menu ul li {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .profile-menu ul li:hover {
+        background: #f0f0f0;
+    }
+    
+    .profile-menu ul li i {
+        margin-right: 10px;
+    }
+    
+    /* Bottom Navigation */
+  
+   
+    
+    
+    </style>
+    <script>function editProfile() {
+        let newName = prompt("Enter your new name:", document.getElementById("profile-name").innerText);
+        if (newName) {
+            document.getElementById("profile-name").innerText = newName;
+        }
+    
+        let newPhone = prompt("Enter your new phone number:", document.getElementById("phone-number").innerText);
+        if (newPhone) {
+            document.getElementById("phone-number").innerText = newPhone;
+        }
+    
+        let newEmail = prompt("Enter your new email:", document.getElementById("email").innerText);
+        if (newEmail) {
+            document.getElementById("email").innerText = newEmail;
+        }
+    }
+    document.querySelector(".menu li:last-child").addEventListener("click", function() {
+    alert("Logging Out...");
+    window.location.href = "index.html"; // Redirect to login page
+});
+
+    </script>
